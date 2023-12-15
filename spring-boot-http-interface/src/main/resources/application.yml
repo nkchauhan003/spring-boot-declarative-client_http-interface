@@ -1,0 +1,8 @@
+user-client:
+  host: http://localhost:8080
+  connectTimeout:
+  readTimeout: 300
+  writeTimeout: 500
+  maxInMemorySize: 2048
+server:
+  port: 8081
