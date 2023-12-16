@@ -49,7 +49,6 @@ public class UserClientConfig {
                 .build();
     }
 
-
     @Bean
     public UserClient userClient() {
         WebClient webClient = WebClient.builder()
@@ -78,5 +77,4 @@ public class UserClientConfig {
         return (request, next) -> next.exchange(request).retryWhen(
                 Retry.backoff(retries, Duration.ofMillis(retryDelayMilis)));
     }
-
 }

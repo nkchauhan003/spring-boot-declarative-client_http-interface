@@ -1,12 +1,14 @@
 package com.cb.rest;
 
 import com.cb.model.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("user")
+@Slf4j
 public class DummyCRUDRestAPIs {
 
     @PostMapping("/")
@@ -41,6 +43,17 @@ public class DummyCRUDRestAPIs {
     public String deleteUser(@PathVariable Integer userId) {
         // code to delete user in the DB
         return "OK!";
+    }
+
+    // Accepting a header in Spring Boot REST API
+    @GetMapping("/name/{userId}")
+    public String getName(
+            @PathVariable Integer userId,
+            @RequestHeader String language) {
+        log.info("Header, language: " + language);
+        // code to get user by id from the DB
+        // logic to convert name as per "language" header
+        return "Tech";
     }
 
 }

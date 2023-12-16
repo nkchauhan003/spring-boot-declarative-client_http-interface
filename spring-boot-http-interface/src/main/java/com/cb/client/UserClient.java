@@ -2,10 +2,13 @@ package com.cb.client;
 
 import com.cb.client.model.User;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.service.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @HttpExchange(
         url = "/user",
@@ -26,4 +29,8 @@ public interface UserClient {
 
     @DeleteExchange("/{userId}")
     public String deleteUser(@PathVariable Integer userId);
+
+    // Sending a header in Spring HttpClient
+    @GetExchange(value = "/name/{userId}")
+    public String getName(@PathVariable Integer userId, @RequestHeader Map<String, String> header);
 }
